@@ -1,0 +1,54 @@
+﻿@model IEnumerable<service_app_2.Dtos.ProdutoDto>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a class="btn btn-primary" asp-action="Create" asp-controller="Produtos" data-abc="true">Criar  Novo</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Preco)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Quantidade)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DataCadastro)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nome)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Preco)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Quantidade)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DataCadastro)
+                </td>
+                <td>
+                    <a class="btn btn-warning" asp-action="Edit" asp-controller="Produtos" asp-route-id="@item.Id" data-abc="true">Editar</a>
+                    <a class="btn btn-info" asp-action="Details" asp-controller="Produtos" asp-route-id="@item.Id" data-abc="true">Detalhes</a>
+                    <a class="btn btn-danger" asp-action="Delete" asp-controller="Produtos" asp-route-id="@item.Id" data-abc="true">Deletar</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
